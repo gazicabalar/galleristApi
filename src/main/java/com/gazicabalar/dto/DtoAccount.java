@@ -4,11 +4,12 @@ import java.math.BigDecimal;
 
 import com.gazicabalar.enums.CurrencyType;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DtoAccount extends DtoBase{
 
 	private String accountNo;
@@ -18,5 +19,5 @@ public class DtoAccount extends DtoBase{
 	private BigDecimal amount;
 	
 	private CurrencyType currencyType;
-	
+
 }
