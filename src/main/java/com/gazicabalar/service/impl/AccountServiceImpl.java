@@ -44,7 +44,6 @@ public class AccountServiceImpl implements IAccountService{
 
 	@Override
 	public DtoAccount getAccount(Long id) {
-		DtoAccount dtoAccount = new DtoAccount();
 
 		Optional<Account> getAccount = accountRepository.findById(id);
 
@@ -52,7 +51,17 @@ public class AccountServiceImpl implements IAccountService{
 			throw new BaseException(new ErrorMessage(MessageType.NO_RECORDS_EXIST, id.toString()));
 		}
 
-		BeanUtils.copyProperties(getAccount.get(), dtoAccount);
+		System.out.println(getAccount.get().getCreatTime());
+
+		DtoAccount dtoAccount = new DtoAccount(
+				getAccount.get().getAccountNo(),
+				getAccount.get().getIban(),
+				getAccount.get().getAmount(),
+				getAccount.get().getCurrencyType()
+		);
+
+		dtoAccount.setId(id);
+		dtoAccount.setCreateTime(getAccount.get().getCreatTime());
 
 		return dtoAccount;
 	}
@@ -105,13 +114,13 @@ public class AccountServiceImpl implements IAccountService{
 	@Override
 	public String deleteAccount(Long id) {
 
-		Optional<Account> account = accountRepository.findById(Long.valueOf(id));
+		Optional<Account> account = accountRepository.findById(id);
 
 		if(account.isEmpty()) {
 			throw new BaseException(new ErrorMessage(MessageType.NO_RECORDS_EXIST, account.toString()));
 		}
 
-		Integer account_id = Math.toIntExact(account.get().getId());
+		Long account_id = account.get().getId();
 
 		accountRepository.delete(account.get());
 
