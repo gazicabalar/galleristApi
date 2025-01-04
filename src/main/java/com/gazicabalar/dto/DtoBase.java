@@ -14,7 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DtoBase {
 
-
 	private Long id;
 
 

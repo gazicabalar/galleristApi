@@ -48,7 +48,7 @@ public class RestAddressControllerImpl extends RestBaseController implements IRe
 	@DeleteMapping("delete/{id}")
 	@Override
 	public RootEntity<String> deleteAddress(@Valid @PathVariable Long id) {
-		return ok(addressService.deleteAddess(id));
+		return ok(addressService.deleteAddress(id));
 	}
 
 

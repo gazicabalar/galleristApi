@@ -15,6 +15,6 @@ public interface IAddressService {
 
 	public DtoAddress updateAddress(Long id, DtoAddressIU dtoAddressIU);
 
-	public String deleteAddess(Long id);
+	public String deleteAddress(Long id);
 	
 }

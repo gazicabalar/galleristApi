@@ -109,7 +109,7 @@ public class AddressServiceImpl implements IAddressService{
 	}
 
 	@Override
-	public String deleteAddess(Long id) {
+	public String deleteAddress(Long id) {
 
 		Optional<Address> address = addressRepository.findById(id);
 
